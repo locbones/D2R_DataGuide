@@ -554,15 +554,12 @@ Tt {
                         <p><b>class</b> - <span style="color: #4472C4"><b>[O]</b></span> - Controls which character class is required for the class specific level requirement "classlevelreq" field. Referenced from the <a href="#code-playerclass">Code</a> column in <a href="#PlayerClass">PlayerClass.txt</a></p>
                         <p><b>classlevelreq</b> - <span style="color: #4472C4"><b>[N]</b></span> - The minimum character level required for a specific class in order to equip an item that has this item affix. This relies on the class specified in the "class" field. If equals null, then the class will default to using the "levelreq" field.</h3>
                         <p><b>frequency</b> - <span style="color: #4472C4"><b>[N]</b></span> - Controls the probability that the affix appears on the item (a higher value means that the item affix will appear on the item more often). This value gets summed together with other "frequency" values from all possible item affixes that can spawn on the item, and then is used as a denominator value for the randomizer. Whichever item affix is randomly selected will be the one to appear on the item. The formula is calculated as the following: [Item Affix Selected] = ["frequency"] / [Total Frequency]. If the item has a magic level (from the "magic lvl" field in weapons.txt/armor.txt/misc.txt) then the magic level value is multiplied with this value. If equals 0, then this item affix will never appear on an item.</h3>
-                        <p id="group-automagic"><b>group</b> - <span style="color: #4472C4"><b>[N]</b></span> - Assigns an item affix to a specific group number. Items cannot spawn with more than 1 item affix with the same group number. This is used to guarantee that certain item affixes do not overlap on the same item. If this field is null, then the group number will default to group 0.</h3><br>
+                        <p id="group-automagic"><b>group</b> - <span style="color: #4472C4"><b>[N]</b></span> - Assigns an item affix to a specific group number. Items cannot spawn with more than 1 item affix with the same group number. This is used to guarantee that certain item affixes do not overlap on the same item. If this field is null, then the group number will default to group 0.</h3><br></p>
                         <span style="color: #bf6606"><b>mod1code</b></span> - <span style="color: #4472C4"><b>[O]</b></span> - Controls the item properties for the item affix (Uses the "code" field from Properties.txt)</h3><br>
                         <span style="color: #bf6606"><b>mod1param</b></span> - <span style="color: #4472C4"><b>[N]</b></span> - The "parameter" value associated with the listed property (mod). Usage depends on the property function (See the "func" field on Properties.txt)</h3><br>
                         <span style="color: #bf6606"><b>mod1min</b></span> - <span style="color: #4472C4"><b>[N]</b></span> - The "min" value to assign to the listed property (mod). Usage depends on the property function (See the "func" field on Properties.txt)</h3><br>
                         <span style="color: #bf6606"><b>mod1max</b></span> - <span style="color: #4472C4"><b>[N]</b></span> - The "max" value to assign to the listed property (mod). Usage depends on the property function (See the "func" field on Properties.txt)</h3><br>
                         <p><b>transformcolor</b> - <span style="color: #4472C4"><b>[N]</b></span> - Controls the color change of the item after spawning with this item affix. If empty, then the item affix will not change the item's color. Referenced from the <a href="#code-colors">Code</a> column in <a href="#colors">colors.txt</a></p>
-
-                    
-
                         <span style="color: #bf6606"><b>itype1</b></span> - <span style="color: #4472C4"><b>[O]</b></span> - Controls what Item Types are allowed to spawn with this item affix. Uses the "code" field from ItemTypes.txt</h3><br>
                         <span style="color: #bf6606"><b>etype1</b></span> - <span style="color: #4472C4"><b>[O]</b></span> - Controls what Item Types are forbidden to spawn with this item affix. Uses the "code" field from ItemTypes.txt</h3><br>
                         <p><b>multiply</b> - <span style="color: #4472C4"><b>[N]</b></span> - Multiplicative modifier for the item's buy and sell costs, based on the item affix (</b>Calculated in 1024ths for buy cost and 4096ths for sell cost)</h3>
@@ -3120,21 +3117,21 @@ Tt {
                         <tr><td>5</td><td><br></td><td>DoLeftThrow - Check that non-primary equipped weapon is a throwing weapon and handle launching the weapon's missile</td></tr>
                         <tr><td>6</td><td>auratargetstate<br>auralencalc<br>aurarangecalc</td><td>AmaDoInnerSight - Apply the "auratargetstate" state to all units in the area with a radius controlled by "aurarangecalc", that lasts a duration controlled by "auralencalc". The state can use any of the aura stats and their related calculation values.</td></tr>
                         <tr><td>7</td><td>calc1<br>calc4</td><td>AmaDoJab - Attempt to attack the target unit. Use "calc1" to control the percent increase for physical damage dealt. Use "calc4" to control the percent of damage converted to elemental, if the "Etype" field is used.</td></tr>
-                        <tr><td>8</td><td>srvmissilea<br>srvmissileb<br>calc1<br>calc2<br>calc3</td><td>AmaDoMultipleShot - Shoot a number of missiles toward a target location. If the weapon class is a bow then use "srvmissilea", otherwise use "srvmissileb" as the missile to create. Use "calc1" to control the number of missiles created. Use "calc2" to control the activation frame for each missile created. Use "calc3" to control the number of triggering missiles.</td></tr>
+                        <tr><td>8</td><td>srvmissilea<br>srvmissileb<br>calc1-3</td><td>AmaDoMultipleShot - Shoot a number of missiles toward a target location. If the weapon class is a bow then use "srvmissilea", otherwise use "srvmissileb" as the missile to create. Use "calc1" to control the number of missiles created. Use "calc2" to control the activation frame for each missile created. Use "calc3" to control the number of triggering missiles.</td></tr>
                         <tr><td>9</td><td>aurastate<br>auralencalc<br>calc1<br>calc4</td><td>BarDoFrenzy - Attack with both weapons on a target or to nearby targets. Add the "aurastate" state to the caster unit, with a duration controlled by "auralencalc". Use "calc1" to control the percentage increase for physical damage dealt. Use "calc4" to control the percent of damage converted to elemental, if the "Etype" field is used.</td></tr>
                         <tr><td>10</td><td>srvmissilea<br>srvmissileb<br>calc1</td><td>AmaDoGuidedArrow - Shoot a missile that will change its path to find a nearby target to hit. If the weapon class is a bow then use "srvmissilea", otherwise use "srvmissileb" as the missile to create. Use "calc1" to control the physical damage dealt by the missile.</td></tr>
-                        <tr><td>11</td><td>aurastate<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec<br>calc1</td><td>AmaDoChargedStrike - Create the number of missiles with randomized pathing. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to control the number of missiles created.</td></tr>
+                        <tr><td>11</td><td>aurastate<br>aurastat1<br>srvmissilea/b/c<br>calc1</td><td>AmaDoChargedStrike - Create the number of missiles with randomized pathing. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to control the number of missiles created.</td></tr>
                         <tr><td>12</td><td>aurarangecalc<br>srvmissilea<br>srvmissileb<br>calc2<br>Param6</td><td>AmaDoStrafe - Use "aurarangecalc" to control the range to find a target. If the weapon class is a bow then use "srvmissilea", otherwise use "srvmissileb" as the missile to create. Use "calc2" to control the percent increase for physical damage dealt. Use "Param6" to control what percent within the entire animation to trigger rolling back the loop within the animation.</td></tr>
                         <tr><td>13</td><td>calc1<br>calc4<br>Param2</td><td>AmaDoFend - Attempt to attack the target unit or nearby enemies with multiple attacks. Use "calc1" to control the percent increase for physical damage dealt. Use "calc4" to control the percent of damage converted to elemental, if the "Etype" field is used. Use "Param2" to control what percent within the entire animation to trigger rolling back the loop within the animation.</td></tr>
-                        <tr><td>14</td><td>aurastate<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec<br>calc1<br>calc2</td><td>AmaDoLightningStrike - Damage the target and create a missile that bounces to different targets. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to control the range of the missile to find a nearby target. Use "calc2" top control the number target chain jump hits for the missile.</td></tr>
+                        <tr><td>14</td><td>aurastate<br>aurastat1<br>srvmissilea/b/c<br>calc1<br>calc2</td><td>AmaDoLightningStrike - Damage the target and create a missile that bounces to different targets. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to control the range of the missile to find a nearby target. Use "calc2" top control the number target chain jump hits for the missile.</td></tr>
                         <tr><td>15</td><td>pettype<br>calc2<br>calc3</td><td>AmaDoDopplezon - Create a pet unit that is a duplicate of the caster unit. Use "calc1" to control the life percent of the pet. Use "calc3" to control the Life percent increase on the pet unit based on the caster's Life. Use "calc2" to control the duration that the pet exists. Apply the "dopllezon_appear" overlay on the pet.</td></tr>
                         <tr><td>16</td><td>pettype<br>calc1<br>calc2</td><td>AmaDoValkyrie - Create a pet unit with generated item equipment and stats. Use "calc1" to control the life percent of the pet. Use "calc2" to control the item level for the generated items on the pet.</td></tr>
-                        <tr><td>17</td><td>aurastate<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec<br>calc1</td><td>SorDoChargedBolt - Create a number of missiles that have a randomized path. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to control the number of missiles created.</td></tr>
+                        <tr><td>17</td><td>aurastate<br>aurastat1<br>srvmissilea/b/c<br>calc1</td><td>SorDoChargedBolt - Create a number of missiles that have a randomized path. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to control the number of missiles created.</td></tr>
                         <tr><td>18</td><td>aurastate<br>auralencalc</td><td>SorDoFrozenArmor - Apply the state on the target unit with its length controlled by "auralencalc".</td></tr>
                         <tr><td>19</td><td>srvmissilea<br>calc1</td><td>SorDoInferno - Create the missile where "calc1" controls the range. Continue creating missiles while having the "inferno" state.</td></tr>
                         <tr><td>20</td><td>aurarangecalc<br>calc1<br>calc2</td><td>SorDoStaticField - Apply damage to all units in the area. Use "aurarangecalc" to control the damage radius. Use "calc1" to control the Life percent damage. Use "calc2" to control the minimum damage dealt.</td></tr>
                         <tr><td>21</td><td>calc1</td><td>SorDoTelekinesis - If the target is a monster or player, then deal damage and use "calc1" to control the knockback chance. If the target is an item, then ensure that the item type is a scroll, gold, or potion. If the target is a object, then call the object's operate function.</td></tr>
-                        <tr><td>22</td><td>aurastate<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec<br>calc1</td><td>SorDoFrostNova - Shoot missiles in a circular array. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to add to the velocity of the missiles created.</td></tr>
+                        <tr><td>22</td><td>aurastate<br>aurastat1<br>srvmissilea/b/c<br>calc1</td><td>SorDoFrostNova - Shoot missiles in a circular array. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to add to the velocity of the missiles created.</td></tr>
                         <tr><td>23</td><td>aurastate<br>auralencalc</td><td>SorDoBlaze - Add the "aurastate" state on the caster with a duration controlled by "auralencalc". Apply any aura stats or events.</td></tr>
                         <tr><td>24</td><td>srvmissilea<br>srvmissileb<br>calc1</td><td>SorDoFirewall - Create 2 "srvmissilea" missiles in opposite directions and create 2 "srvmissileb" missiles also at those locations. Use "calc1" to control how many different groups of these missiles can exist at once.</td></tr>
                         <tr><td>25</td><td>aurastate<br>auralencalc</td><td>SorDoEnchant - Add the "aurastate" state on the target with a duration controlled by "auralencalc". Apply any aura stats or events.</td></tr>
@@ -3148,19 +3145,19 @@ Tt {
                         <tr><td>33</td><td>calc1<br>calc2<br>calc3<br>calc4</td><td>AssDoPsychicHammer - Validate that the target unit is a monster or player and is not in town. Use the calculation fields to control the chance to knockback the target if it is a monster, unique monster, boss, or player, respectively.</td></tr>
                         <tr><td>34</td><td>aurastate<br>auralencalc<br>aurastat1<br>aurastat2<br>aurastatcalc2</td><td>AssDoProgressiveAttack - Attempt to attack the target unit and deal damage. Calculate the progressive damage. Use "auralencalc" to determine the length of the charges. Use "aurastat1" to control the progressive charges. Use "aurastat2" as a stat when the player attacks and has no charges. Use "aurastatcalc2" to control that stat's value.</td></tr>
                         <tr><td>35</td><td>aurastate<br>auralencalc<br>aurastat1<br>aurastat2<br>aurastatcalc2</td><td>AssDoDualProgressiveAttack - Check that the player has 2 weapons equipped. Attempt to attack the target unit twice with a frame delay, and use the "AssDoProgressiveAttack" (Code = 34) function for each attack.</td></tr>
-                        <tr><td>36</td><td>aurastate<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec<br>calc1</td><td>ApplyClawsOfThunderLvl2 - Shoot missiles in a circular array. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to add to the velocity of the missiles created.</td></tr>
-                        <tr><td>37</td><td>aurastate<br>aurarangecalc<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec</td><td>ApplyClawsOfThunderLvl3 - Shoot missiles in an arc array. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "aurarangecalc" to control how many missiles are created, only if there are no values from the progressive charge calculation fields (see "prgcalc1")</td></tr>
+                        <tr><td>36</td><td>aurastate<br>aurastat1<br>srvmissilea/b/c<br>calc1</td><td>ApplyClawsOfThunderLvl2 - Shoot missiles in a circular array. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "calc1" to add to the velocity of the missiles created.</td></tr>
+                        <tr><td>37</td><td>aurastate<br>aurarangecalc<br>aurastat1<br>srvmissilea/b/c</td><td>ApplyClawsOfThunderLvl3 - Shoot missiles in an arc array. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "aurarangecalc" to control how many missiles are created, only if there are no values from the progressive charge calculation fields (see "prgcalc1")</td></tr>
                         <tr><td>38</td><td>aurastate<br>aurarangecalc<br>aurastat1</td><td>AssDoAreaDamage - Deal damage to enemies in an area at a target location. Use the progressive calculation fields to determine the radius increase per charge, controlled by the "aurastate" state and the "aurastat1" value, otherwise use "aurarangecalc" for the radius.</td></tr>
-                        <tr><td>39</td><td>aurastate<br>aurarangecalc<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec</td><td>AssMissileDisc - Create a disc of randomly positioned missiles. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use the progressive calculation fields to determine the radius increase per charge, controlled by the "aurastate" state and the "aurastat1" value, otherwise use "aurarangecalc" for the radius.</td></tr>
-                        <tr><td>40</td><td>aurastate<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec</td><td>ApplyRoyalStrikeLvl1 - Create a missile at a target location. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields.</td></tr>
-                        <tr><td>41</td><td>aurastate<br>aurarangecalc<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec</td><td>ApplyChaosIce - Create multiple missiles from the caster unit. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use the progressive calculation fields to determine the number of missiles created per charge, controlled by the "aurastate" state and the "aurastat1" value. Use "aurarangecalc" for the radius.</td></tr>
+                        <tr><td>39</td><td>aurastate<br>aurarangecalc<br>aurastat1<br>srvmissilea/b/c</td><td>AssMissileDisc - Create a disc of randomly positioned missiles. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use the progressive calculation fields to determine the radius increase per charge, controlled by the "aurastate" state and the "aurastat1" value, otherwise use "aurarangecalc" for the radius.</td></tr>
+                        <tr><td>40</td><td>aurastate<br>aurastat1<br>srvmissilea/b/c</td><td>ApplyRoyalStrikeLvl1 - Create a missile at a target location. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields.</td></tr>
+                        <tr><td>41</td><td>aurastate<br>aurarangecalc<br>aurastat1<br>srvmissilea/b/c</td><td>ApplyChaosIce - Create multiple missiles from the caster unit. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use the progressive calculation fields to determine the number of missiles created per charge, controlled by the "aurastate" state and the "aurastat1" value. Use "aurarangecalc" for the radius.</td></tr>
                         <tr><td>42</td><td>calc2<br>calc3<br>calc4<br>Param1<br>Param2</td><td>AssDoDragonTalon - Attempt to melee attack the target unit multiple times. Use the progressive fields to control the charge functions. Use each calculation field to control the percent chance to knockback for a monster, boss, or player unit. Use the parameters to control a linear calculation for the percentage of bonus physical damage dealt.</td></tr>
-                        <tr><td>43</td><td>aurastate<br>aurarangecalc<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec</td><td>AssDoShockField - Create multiple missiles using the lob function. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use the progressive calculation fields to determine the number of missiles created per charge, controlled by the "aurastate" state and the "aurastat1" value. Use "aurarangecalc" for the radius.</td></tr>
+                        <tr><td>43</td><td>aurastate<br>aurarangecalc<br>aurastat1<br>srvmissilea/b/c</td><td>AssDoShockField - Create multiple missiles using the lob function. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use the progressive calculation fields to determine the number of missiles created per charge, controlled by the "aurastate" state and the "aurastat1" value. Use "aurarangecalc" for the radius.</td></tr>
                         <tr><td>44</td><td>pettype</td><td>AssDoBladeSentinel - Summon a pet at the target location and cause it to oscillate</td></tr>
                         <tr><td>45</td><td>pettype</td><td>AssDoWakeOfFireSentry - Summon a pet at the target location</td></tr>
                         <tr><td>46</td><td>calc1<br>calc4</td><td>AssDoDragonClaw - Attempt to attack the target unit twice with a frame delay. Use "calc1" to control the percent increase for physical damage dealt. Use "calc4" to control the percent of damage converted to elemental, if the "Etype" field is used. Use the progressive fields to determine progressive damage changes.</td></tr>
                         <tr><td>47</td><td>aurastate<br>auratargetstate<br>auralencalc<br>aurarangecalc</td><td>AssDoCloakOfShadows - Apply the "aurastate" state on the caster unit with a duration controlled by "auralencalc". Apply the "auratargetstate" state on nearby enemies in a radius controlled by "aurarangecalc". Use any applicable aura stats or filters.</td></tr>
-                        <tr><td>48</td><td>aurastate<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec</td><td>AssDoBladeFury - Create a missile after a frame delay. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use the progressive calculation fields to modify the delay between creating the next missile, based on the charges.</td></tr>
+                        <tr><td>48</td><td>aurastate<br>aurastat1<br>srvmissilea/b/c</td><td>AssDoBladeFury - Create a missile after a frame delay. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use the progressive calculation fields to modify the delay between creating the next missile, based on the charges.</td></tr>
                         <tr><td>49</td><td>pettype<br>Param5<br>Param6</td><td>AssDoShadowWarrior - Create a pet unit with generated item equipment and stats. Use "Param5" and "Param6" to control the item level for the generated items on the pet.</td></tr>
                         <tr><td>50</td><td>aurarangecalc<br>calc1</td><td>AssDoDragonTail - Attempt to attack a target unit and deal damage in an area. Use the progressive fields to control the charge functions. Use "aurarangecalc" to control the radius. Use "calc1" to control the percent increase in damage dealt.</td></tr>
                         <tr><td>51</td><td>aurarangecalc<br>calc1<br>calc2<br>Param4</td><td>AssDoMindBlast - Randomly damage and convert enemies in an area. Use "aurarangecalc" to control the radius, or if using the progressive charges, then use their field values instead. Use "calc1" to control the chance to convert enemies. Use "calc2" to control the duration enemies are converted. Use "Param4" to add an additional randomized duration value.</td></tr>
@@ -3171,9 +3168,9 @@ Tt {
                         <tr><td>56</td><td>pettype</td><td>NecCreateGolem - Create a pet unit with defined stats. If the skill has the "TargetableOnly" and "TargetCorpse" flag enabled, then the summoned pet will copy the modifiers of the corpse.</td></tr>
                         <tr><td>57</td><td>pettype</td><td>NecCreateIronGolem - Validate that the target is an identified item on the ground. Remove the item and create the pet, inheriting properties from the item.</td></tr>
                         <tr><td>58</td><td>pettype</td><td>NecDoRevive - Validate that the target is a corpse that can be revived, then revive the monster, applying any valid stats</td></tr>
-                        <tr><td>59</td><td>auratargetstate<br>auralencalc<br>aurarangecalc<br>aurastat2<br>aurastat3<br>aurastat4<br>aurastat5<br>aurastat6</td><td>NecDoAttract - Validate that the target is a monster and can have its AI changed. Apply the "auratargetstate" state on any valid monsters in an area controlled by "aurarangecalc" which lasts a duration controlled by "auralencalc".</td></tr>
+                        <tr><td>59</td><td>auratargetstate<br>auralencalc<br>aurarangecalc</td><td>NecDoAttract - Validate that the target is a monster and can have its AI changed. Apply the "auratargetstate" state on any valid monsters in an area controlled by "aurarangecalc" which lasts a duration controlled by "auralencalc".</td></tr>
                         <tr><td>60</td><td>pettype<br>calc2<br>srvmissilea</td><td>NecDoBoneWall - Create the pet, and then create 2 missiles that shoot in opposite directions, where "calc2" controls the number of sub missiles to create within each of these missile parameters.</td></tr>
-                        <tr><td>61</td><td>auratargetstate<br>auralencalc<br>aurarangecalc<br>aurastat2<br>aurastat3<br>aurastat4<br>aurastat5<br>aurastat6</td><td>NecDoConfuse - Validate that the target is a monster and can have its AI changed. Apply the "auratargetstate" state on any valid monsters in an area controlled by "aurarangecalc" which lasts a duration controlled by "auralencalc".</td></tr>
+                        <tr><td>61</td><td>auratargetstate<br>auralencalc<br>aurarangecalc<br>aurastat2-6</td><td>NecDoConfuse - Validate that the target is a monster and can have its AI changed. Apply the "auratargetstate" state on any valid monsters in an area controlled by "aurarangecalc" which lasts a duration controlled by "auralencalc".</td></tr>
                         <tr><td>62</td><td>pettype</td><td>NecDoBonePrison - Create a number of pets around the target unit.</td></tr>
                         <tr><td>63</td><td>srvmissilea</td><td>NecDoPoisonExplosion - Validate that the target corpse can explode, then update the corpse to be unselectable and create a radial ring of poison missiles.</td></tr>
                         <tr><td>64</td><td>calc2<br>Param4</td><td>PalDoSacrifice - Attack and deal damage to the target. Deal damage to the caster based on a percentage of life controlled by "calc2" and "Param4".</td></tr>
@@ -3187,7 +3184,7 @@ Tt {
                         <tr><td>72</td><td>calc1<br>Param1<br>Param2<br>Param3<br>Param4</td><td>BarDoFindItem - Validate the target corpse, then update the corpse to be unselectable and roll a random chance to spawn a treasure class item. Use "calc1" to control the chance of finding an item. Use the parameter values to control the chances for finding Low Quality, Normal, High Quality, and Magic items.</td></tr>
                         <tr><td>73</td><td>srvmissilea<br>calc1</td><td>PalDoBlessedHammer - Create a missile in a spiral path pattern. Use "calc1" to control the damage percent bonus when the caster has the "concentration" state.</td></tr>
                         <tr><td>74</td><td>calc1</td><td>BarDoDoubleThrow - Launch the weapon missile, where "calc1" controls the bonus damage percent</td></tr>
-                        <tr><td>75</td><td>srvmissilea<br>srvmissileb<br>srvmissilec</td><td>BarDoGrimWard - Validate the target corpse, then update the corpse to be unselectable and create the "srvmissilea" missile. If the target unit has the "large" flag enabled (see monstats2.txt) then use "srvmissileb" instead. If the target unit has the "small" flag enabled (see monstats2.txt) then use "srvmissilec" instead.</td></tr>
+                        <tr><td>75</td><td>srvmissilea/b/c</td><td>BarDoGrimWard - Validate the target corpse, then update the corpse to be unselectable and create the "srvmissilea" missile. If the target unit has the "large" flag enabled (see monstats2.txt) then use "srvmissileb" instead. If the target unit has the "small" flag enabled (see monstats2.txt) then use "srvmissilec" instead.</td></tr>
                         <tr><td>76</td><td>aurastate<br>calc1</td><td>BarDoWhirlwind - If the caster unit is at the target location, then remove the aura and stop whirlwinding. Otherwise, find nearby enemies and deal damage, where "calc1" controls the damage bonus.</td></tr>
                         <tr><td>77</td><td>calc1<br>calc2</td><td>BarDoLeap - Validate the target position and caster's collision, and move the unit. Use "calc1" to control the range, and "calc2" to control the speed.</td></tr>
                         <tr><td>78</td><td>calc1<br>calc2<br>calc4</td><td>BarDoLeapAttack - Validate the target position and the caster's collision, and move the unit. Make the unit attack the target, if nearby, or find another nearby target. Use "calc2" to control the speed. Use "calc1" to control the percent increase for physical damage dealt. Use "calc4" to control the percent of damage converted to elemental, if the "Etype" field is used.</td></tr>
@@ -3255,7 +3252,7 @@ Tt {
                         <tr><td>140</td><td><br></td><td>MonDoBaalTentacle - Based on the monster class of the caster, create a number of "baaltentacle1" summoned monsters randomly positioned in a location with a radius size of 9. Make sure these monsters do not provide exp or reward items.</td></tr>
                         <tr><td>141</td><td>aurarangecalc<br>calc1<br>calc2<br>calc3<br>EType<br>Param5<br>Param6</td><td>MonDoBaalCorpseExplosion - Find a nearby dead monster and then do the "NecDoCorpseExplosion" function (Code = 55) except where "Param5" and "Param6" control the baseline radius and radius increase per skill level.</td></tr>
                         <tr><td>142</td><td>prgcalc1<br>prgcalc2<br>prgcalc3<br>aurastate<br>aurastat1<br>aurarangecalc</td><td>AssDoAreaAttack - Deal attack damage in an area. Based on the "progressive" flag, the "aurastate" field, or the "aurastat1" field, use the proper "progcalc#" value to control the radius, based on the number of progressive charges. Otherwise, default to using "aurarangecalc" for the radius.</td></tr>
-                        <tr><td>143</td><td>prgcalc1<br>prgcalc2<br>prgcalc3<br>aurastate<br>aurastat1<br>srvmissilea<br>srvmissileb<br>srvmissilec</td><td>ApplyRoyalStrikeLvl2 - Create a number of missiles that move in a randomized pattern. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "aurarangecalc" value by default for the number of missiles created, or use the appropriate progressive calculation fields, based on the number of progressive charges.</td></tr>
+                        <tr><td>143</td><td>prgcalc1<br>prgcalc2<br>prgcalc3<br>aurastate<br>aurastat1<br>srvmissilea/b/c</td><td>ApplyRoyalStrikeLvl2 - Create a number of missiles that move in a randomized pattern. Use the "srvmissilea" missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the "aurastate" field and "aurastat1" fields. Use "aurarangecalc" value by default for the number of missiles created, or use the appropriate progressive calculation fields, based on the number of progressive charges.</td></tr>
                         <tr><td>144</td><td>pettype<br>calc1</td><td>SorDoHydra - Validate the target location and create 3 pets, where "calc1" controls their duration and bonus life percent.</td></tr>
                         <tr><td>145</td><td>aurastate<br>aurarangecalc<br>Param4</td><td>DruApplyHurricane - Apply the state on the caster with the radius controlled by "aurarangecalc" and the frame state updates to deal radius damage controlled by "Param4".</td></tr>
                         <tr><td>146</td><td>aurastate<br>aurarangecalc<br>srvmissilea<br>Param4</td><td>DruApplyArmageddon - Update the state on the caster unit based on the events, and then create a missile in a radius controlled by "aurarangecalc" at a periodic frame interval controlled by "Param4".</td></tr>
@@ -4437,6 +4434,126 @@ Tt {
                     </table>
 
                     <h3 id="compcode">Compcode.txt</h3>
+
+                    <table border=1 cellspacing=0 cellpadding=0>
+                        <tr><td><b>component</b></td><td id="code-compcode"><b>code</b></td></tr>
+                        <tr><td>nil</td><td>nil</td></tr>
+                        <tr><td>light</td><td>lit</td></tr>
+                        <tr><td>medium</td><td>med</td></tr>
+                        <tr><td>heavy</td><td>hev</td></tr>
+                        <tr><td>heavy</td><td>hvy</td></tr>
+                        <tr><td>skarmor</td><td>des</td></tr>
+                        <tr><td>roguearmor/brhead</td><td>brv</td></tr>
+                        <tr><td>axe</td><td>axe</td></tr>
+                        <tr><td>flail</td><td>fla</td></tr>
+                        <tr><td>handaxe</td><td>hax</td></tr>
+                        <tr><td>mace</td><td>mac</td></tr>
+                        <tr><td>scimitar</td><td>scm</td></tr>
+                        <tr><td>buckler</td><td>buc</td></tr>
+                        <tr><td>large shield</td><td>lrg</td></tr>
+                        <tr><td>kite shield</td><td>kit</td></tr>
+                        <tr><td>small shield</td><td>sml</td></tr>
+                        <tr><td>long sword</td><td>lsd</td></tr>
+                        <tr><td>wand</td><td>wnd</td></tr>
+                        <tr><td>short sword</td><td>ssd</td></tr>
+                        <tr><td>club</td><td>clb</td></tr>
+                        <tr><td>torch</td><td>tch</td></tr>
+                        <tr><td>battleaxe</td><td>btx</td></tr>
+                        <tr><td>halberd</td><td>hal</td></tr>
+                        <tr><td>large axe</td><td>lax</td></tr>
+                        <tr><td>maul</td><td>mau</td></tr>
+                        <tr><td>scythe</td><td>scy</td></tr>
+                        <tr><td>war hammer</td><td>whm</td></tr>
+                        <tr><td>whip</td><td>whp</td></tr>
+                        <tr><td>javelin</td><td>jav</td></tr>
+                        <tr><td>exploding pot</td><td>opl</td></tr>
+                        <tr><td>gas potion</td><td>gpl</td></tr>
+                        <tr><td>short bow</td><td>sbw</td></tr>
+                        <tr><td>long bow</td><td>lbw</td></tr>
+                        <tr><td>long battle bow</td><td>lbb</td></tr>
+                        <tr><td>short battle bow</td><td>sbb</td></tr>
+                        <tr><td>pike</td><td>pik</td></tr>
+                        <tr><td>spear</td><td>spr</td></tr>
+                        <tr><td>trident</td><td>tri</td></tr>
+                        <tr><td>falchion</td><td>flc</td></tr>
+                        <tr><td>saber</td><td>sbr</td></tr>
+                        <tr><td>glaive</td><td>glv</td></tr>
+                        <tr><td>poleaxe</td><td>pax</td></tr>
+                        <tr><td>broad sword</td><td>bsd</td></tr>
+                        <tr><td>flamberge</td><td>flb</td></tr>
+                        <tr><td>waraxe</td><td>wax</td></tr>
+                        <tr><td>warscythe</td><td>wsc</td></tr>
+                        <tr><td>warsword</td><td>wsd</td></tr>
+                        <tr><td>claymore</td><td>clm</td></tr>
+                        <tr><td>dk weapon</td><td>smc</td></tr>
+                        <tr><td>skmage fire</td><td>fir</td></tr>
+                        <tr><td>skmage ltng</td><td>lht</td></tr>
+                        <tr><td>skmage cold</td><td>cld</td></tr>
+                        <tr><td>skmage pois</td><td>pos</td></tr>
+                        <tr><td>dk rh spell</td><td>rsp</td></tr>
+                        <tr><td>dk lh spell</td><td>lsp</td></tr>
+                        <tr><td>dk unholy</td><td>unh</td></tr>
+                        <tr><td>dk part</td><td>rsg</td></tr>
+                        <tr><td>misc part 1</td><td>bld</td></tr>
+                        <tr><td>misc part 2</td><td>shr</td></tr>
+                        <tr><td>misc part 3</td><td>lhr</td></tr>
+                        <tr><td>misc part 4</td><td>hbd</td></tr>
+                        <tr><td>misc part 5</td><td>tkt</td></tr>
+                        <tr><td>headress1</td><td>bab</td></tr>
+                        <tr><td>headress2</td><td>pha</td></tr>
+                        <tr><td>headress3</td><td>fan</td></tr>
+                        <tr><td>headress4</td><td>pon</td></tr>
+                        <tr><td>zealot head 1</td><td>hd1</td></tr>
+                        <tr><td>zealot head 2</td><td>hd2</td></tr>
+                        <tr><td>zealot head 3</td><td>hd3</td></tr>
+                        <tr><td>zealot head 4</td><td>hd4</td></tr>
+                        <tr><td>zealot torso 1</td><td>zz1</td></tr>
+                        <tr><td>zealot torso 2</td><td>zz2</td></tr>
+                        <tr><td>zealot torso 3</td><td>zz3</td></tr>
+                        <tr><td>zealot torso 4</td><td>zz4</td></tr>
+                        <tr><td>zealot torso 5</td><td>zz5</td></tr>
+                        <tr><td>zealot torso 6</td><td>zz6</td></tr>
+                        <tr><td>zealot torso 7</td><td>zz7</td></tr>
+                        <tr><td>flying scim</td><td>red</td></tr>
+                        <tr><td>thornhulkhead2</td><td>th2</td></tr>
+                        <tr><td>thornhulkhead3</td><td>th3</td></tr>
+                        <tr><td>thornhulkhead4</td><td>th4</td></tr>
+                        <tr><td>thornhulkhead5</td><td>th5</td></tr>
+                        <tr><td>fetish weap 1</td><td>fbl</td></tr>
+                        <tr><td>fetish weap 2</td><td>fsp</td></tr>
+                        <tr><td>young npc head</td><td>yng</td></tr>
+                        <tr><td>old npc head</td><td>old</td></tr>
+                        <tr><td>bearded npc head</td><td>brd</td></tr>
+                        <tr><td>goatee npc head</td><td>got</td></tr>
+                        <tr><td>npc part 1</td><td>fez</td></tr>
+                        <tr><td>npc part 2</td><td>rol</td></tr>
+                        <tr><td>npc part 3</td><td>bsk</td></tr>
+                        <tr><td>npc part 4</td><td>buk</td></tr>
+                        <tr><td>npc part 5</td><td>sak</td></tr>
+                        <tr><td>npc part 6</td><td>ban</td></tr>
+                        <tr><td>npc part 7</td><td>fsh</td></tr>
+                        <tr><td>npc part 8</td><td>snk</td></tr>
+                        <tr><td>fem brown hair</td><td>brn</td></tr>
+                        <tr><td>fem black hair</td><td>blk</td></tr>
+                        <tr><td>fem npc leg 1</td><td>srt</td></tr>
+                        <tr><td>fem npc leg 2</td><td>lng</td></tr>
+                        <tr><td>fem npc leg 3</td><td>dln</td></tr>
+                        <tr><td>fem npc tor 1</td><td>btp</td></tr>
+                        <tr><td>fem npc tor 2</td><td>mtp</td></tr>
+                        <tr><td>fem npc tor 3</td><td>stp</td></tr>
+                        <tr><td>fem npc tor 4</td><td>svt</td></tr>
+                        <tr><td>dk head 1</td><td>col</td></tr>
+                        <tr><td>dk head 2</td><td>hod</td></tr>
+                        <tr><td>dk head 3</td><td>hrn</td></tr>
+                        <tr><td>siege beast tr</td><td>lnk</td></tr>
+                        <tr><td>siege beast s1</td><td>tur</td></tr>
+                        <tr><td>siege beast s3</td><td>mlk</td></tr>
+                        <tr><td>full helm</td><td>fhm</td></tr>
+                        <tr><td>great helm</td><td>ghm</td></tr>
+                        <tr><td>pow hand</td><td>bhn</td></tr>
+                        <tr><td>pow head</td><td>hed</td></tr>
+                </table>
+
                     <h3 id="composit">Composit.txt</h3>
 
                     <table border=1 cellspacing=0 cellpadding=0>
@@ -4619,6 +4736,49 @@ Tt {
                     </table>
 
                     <h3 id="MonPlace">MonPlace.txt</h3>
+
+                    <table border=1 cellspacing=0 cellpadding=0>
+                        <tr><td><b>code</b></td></tr>
+                        <tr><td>place_nothing</td></tr>
+                        <tr><td>place_npc_pack</td></tr>
+                        <tr><td>place_unique_pack</td></tr>
+                        <tr><td>place_champion</td></tr>
+                        <tr><td>place_rogue_warner</td></tr>
+                        <tr><td>place_bloodraven</td></tr>
+                        <tr><td>place_rivermonster_right</td></tr>
+                        <tr><td>place_rivermonster_left</td></tr>
+                        <tr><td>place_tightspotboss</td></tr>
+                        <tr><td>place_amphibian</td></tr>
+                        <tr><td>place_tentacle_ns</td></tr>
+                        <tr><td>place_tentacle_ew</td></tr>
+                        <tr><td>place_fallennest</td></tr>
+                        <tr><td>place_fetishnest</td></tr>
+                        <tr><td>place_talkingrogue</td></tr>
+                        <tr><td>place_talkingguard</td></tr>
+                        <tr><td>place_dumbguard</td></tr>
+                        <tr><td>place_fallen</td></tr>
+                        <tr><td>place_fallenshaman</td></tr>
+                        <tr><td>place_maggot</td></tr>
+                        <tr><td>place_maggotegg</td></tr>
+                        <tr><td>place_mosquitonest</td></tr>
+                        <tr><td>place_fetish</td></tr>
+                        <tr><td>place_fetishshaman</td></tr>
+                        <tr><td>place_impgroup</td></tr>
+                        <tr><td>place_imp</td></tr>
+                        <tr><td>place_miniongroup</td></tr>
+                        <tr><td>place_minion</td></tr>
+                        <tr><td>place_bloodlord</td></tr>
+                        <tr><td>place_deadminion</td></tr>
+                        <tr><td>place_deadimp</td></tr>
+                        <tr><td>place_deadbarb</td></tr>
+                        <tr><td>place_reanimateddead</td></tr>
+                        <tr><td>place_group25</td></tr>
+                        <tr><td>place_group50</td></tr>
+                        <tr><td>place_group75</td></tr>
+                        <tr><td>place_group100</td></tr>
+                    </table>
+
+
                     <h3 id="ObjMode">ObjMode.txt</h3>
 
                     <table border=1 cellspacing=0 cellpadding=0>
@@ -4634,6 +4794,8 @@ Tt {
                     </table>
 
                     <h3 id="ObjType">ObjType.txt</h3>
+                    <span style="color: #bf6606"><b>This file is too large to be displayed here</b></span><br><br>
+
                     <h3 id="PlayerClass">PlayerClass.txt</h3>
 
                     <table border=1 cellspacing=0 cellpadding=0>
