@@ -360,7 +360,7 @@ Tt {
                         <p><b>classlevelrangestart</b> - <span style="color: #4472C4"><b>[O]</b></span> - Uses an area level (<a href="#name-levels">Name</a> field from <a href="#Levels">Levels.txt</a>) with its MonLvl values as a global Act minimum monster level. For example, this is used to determine chest levels in an Act.</p>
                         <p><b>classlevelrangeend</b> - <span style="color: #4472C4"><b>[O]</b></span> - Uses an area level (<a href="#name-levels">Name</a> field from <a href="#Levels">Levels.txt</a>) with its MonLvl values as a global Act maximum monster level. For example, this is used to determine chest levels in an Act.</p>
                         <p id="wanderingstart"><b>wanderingnpcstart</b> - <span style="color: #4472C4"><b>[N]</b></span> - Uses an index to determine which wandering monster class to use when populating areas (<a href="#WanderingMon">WanderingMon.txt</a> for a list of possible monsters to spawn)</p>
-                        <p><b>wanderingnpcrange</b> - <span style="color: #4472C4"><b>[N]</b></span> - This is a modifier that gets added to the <a href="#wanderingstart">wanderingnpcstart</a>> value to randomly select an index</p>
+                        <p><b>wanderingnpcrange</b> - <span style="color: #4472C4"><b>[N]</b></span> - This is a modifier that gets added to the <a href="#wanderingstart">wanderingnpcstart</a> value to randomly select an index</p>
                         <p><b>commonactcof</b> - <span style="color: #4472C4"><b>[O]</b></span> - Specifies which ".D2" file to use as for the common Act COF file. This is used to establish the seed when initializing the Act.</p>
                         <p><span style="color: lightseagreen"><b>waypoint1</b></span> - <span style="color: #4472C4"><b>[O]</b></span> - Uses an area level (<a href="#name-levels">Name</a> field from <a href="#Levels">Levels.txt</a>) as the designated waypoint selection in the Waypoint UI</p>
                         <p><b>wanderingMonsterPopulateChance</b> - <span style="color: #4472C4"><b>[N]</b></span> - The percent chance (from 0 to 100) to spawn a wandering monster (<a href="#WanderingMon">WanderingMon.txt</a> for a list of possible monsters to spawn)</p>
@@ -787,7 +787,7 @@ Tt {
                         <p id="value-cube"><b>value</b> - <span style="color: #4472C4"><b>[N]</b></span> - Integer value used as a possible parameter for the <a href="#op-cube">op</a> function. Normally used to compare against the <a href="#id-isc">*ID</a> linked in <a href="#param-cube">param</a></h3>
                         <p><b>class</b> - <span style="color: #4472C4"><b>[O]</b></span> - Defines the recipe to be only usable by a defined class. Referenced from the <a href="#code-playerclass">Code</a> column in <a href="#PlayerClass">PlayerClass.txt</a></p>
                         <p><b>numinputs</b> - <span style="color: #4472C4"><b>[N]</b></span> - Controls the number of items that need to be inside the cube for the recipe</h3></p>
-                        <p><span style="color: lightseagreen"><b>input 1</b></span> - <span style="color: #4472C4"><b>[O]</b></span> - Controls what items are required for the recipe. Uses either the item's unique <a href="#code-AMW">code</a> or a combination of pre-defined codes from the table below, separated by commas if needed. (hiq,noe)</p>
+                        <p id="input1-cube"><span style="color: lightseagreen"><b>input 1</b></span> - <span style="color: #4472C4"><b>[O]</b></span> - Controls what items are required for the recipe. Uses either the item's unique <a href="#code-AMW">code</a> or a combination of pre-defined codes from the table below, separated by commas if needed. (hiq,noe)</p>
 
                     <table border=1 cellspacing=0 cellpadding=0>
                         <tr><td><b>Code</b></td><td><b>Description</b></td></tr>
@@ -820,7 +820,7 @@ Tt {
                         <tr><td>Pandemonium Portal</td><td>Special code to randomly create 1 of the 3 Pandemonium Portals:<br>(The Matron's Den / The Forgotten Sands / The Furnace of Pain)<br>(Does not create duplicate portals in the same game)</td></tr>
                         <tr><td>Pandemonium Finale Portal</td><td>Special code to create the Portal to Uber Tristram</td></tr>
                         <tr><td>Red Portal</td><td>Special code to create a permanent Red Portal to a Level ID.<br>The Level ID is determined by the output "qty=#" code.</td></tr>
-                        <tr><td>usetype</td><td>Use the same item type as "input 1" for the output item's type</td></tr>
+                        <tr><td>usetype</td><td>Use the same item type as <a href="#input1-cube">input 1</a> for the output item's type</td></tr>
                         <tr><td>useitem</td><td>Use the item from "input 1" as the output item</td></tr>
                         <tr><td>qty=#</td><td>The number (#) of this item type created</td></tr>
                         <tr><td>pre=#</td><td>Force the output item to have an item prefix, where # equals the ID of the prefix (the row count on MagicPrefix.txt)</td></tr>
