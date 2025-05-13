@@ -4334,7 +4334,8 @@ Tt {
 
                     <h2 id="TreasureClassEx">TreasureClassEx.txt</h2>
                         <p>This file controls the Treasure Class linked to a monster drop. Treasure Classes are groups of item types and their chances of dropping from a monster.</p>
-                        <p>This is used by the following data files: monstats.txt, SuperUniques.txt</p><br> 
+                        <p>This is used by the following data files: monstats.txt, SuperUniques.txt</p>
+                        <p>Other Treasure Classes referenced in this file, must be placed above the TC referencing it (upstream)</p><br> 
                     <h3 id="TreasureClassExdf">Data Fields</h3>
                         <p id="treasureclass-tcex"><b>Treasure Class</b> - <span style="color: #4472C4"><b>[O]</b></span> - Defines the unique Treasure Class ID, that is referenced in other files</h3>
                         <p><b>group</b> - <span style="color: #4472C4"><b>[N]</b></span> - Assigns the Treasure Class to a group ID value, which will connect this Treasure Class with other Treasure Classes, as a potential Treasure Class to use for an itemdrop. When determining which Treasure Class to use for an item drop, the game will iterate through all Treasure Classes that share the same group. This field works with the <a href="#level-tcex">level</a> field to determine an ideal Treasure Class to use for the monster drop. Treasure Classes that share the same group should be in contiguous order</h3>
